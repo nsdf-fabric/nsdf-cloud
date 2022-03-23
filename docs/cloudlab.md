@@ -123,7 +123,7 @@ ec2-cloudlab:
 
 # Examples
 
-Create new nodes`:
+Create new nodes:
 
 ```
 alias nsdf-cloud="python3 -m nsdf-cloud"

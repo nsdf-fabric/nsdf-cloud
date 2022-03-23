@@ -12,15 +12,12 @@ List:
 * Chameleon Cloud [Setup](./docs/chameleon.md)
 * CloudLab[ Setup](./docs/cloudlab.md)
 * Vultr [Setup](./docs/vultr.md)
-* *more to come soon*
+* JetStream [Setup](./docs/jetstream.md)
 
 # What to do next
 
 Items:
 
-* [ ] Enable XSede
-  - [ ] JetStream TACC
-  - [ ] JetStream Indiana
 * [ ] Enable IBM Cloud
 - [ ] Enable Google Cloud
 - [ ] Enable Azure Cloud
@@ -49,8 +46,6 @@ python3 -m pip install \
 ```
 
 # Security checks
-
-
 
 ```
 python3 -m pip install install truffleHog
