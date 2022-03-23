@@ -47,3 +47,12 @@ python3 -m pip install \
     python-chi \
     bs4
 ```
+
+# Security checks
+
+
+
+```
+python3 -m pip install install truffleHog
+trufflehog ./
+```
