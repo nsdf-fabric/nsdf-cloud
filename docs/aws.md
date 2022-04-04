@@ -117,6 +117,8 @@ Destroy nodes:
 nsdf-cloud ec2-aws delete nodes test1 --region $REGION
 ```
 
+### Other Helpful Snippets
+
 If you want to **list all instances in all regions** (note: you could have some errors due to disabled regions):
 
 ```
