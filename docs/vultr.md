@@ -30,7 +30,7 @@ Add one item to your `~/.nsdf/vault/vault.yml` file (change values as needed; fo
 
 ```
 ec2-vultr:
-  class: VultrEcom
+  class: VultrEc2
   api-key: XXXXX
   num: 1
   VPSPLANID: 201  # this plan is '1024 MB RAM,25 GB SSD,1.00 TB BW'
