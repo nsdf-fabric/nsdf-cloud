@@ -29,7 +29,7 @@ Go to the Vulr [Manage SSH keys](https://www.cloudlab.us/ssh-keys.php) and add y
 Add one item to your `~/.nsdf/vault/vault.yml` file (change values as needed; for example you may need to change the `api-key`):
 
 ```
-ec2-vultr:/
+ec2-vultr:
   class: VultrEcom
   api-key: XXXXX
   num: 1
