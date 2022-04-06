@@ -3,6 +3,7 @@
 Links:
 
 - https://www.ibm.com/cloud/cli
+- https://cloud.ibm.com/docs/cli?topic=cli-getting-started
 - https://github.com/IBM-Cloud/ibm-cloud-cli-release/issues/57
 - https://cloud.ibm.com/docs/vpc?topic=vpc-infrastructure-cli-plugin-vpc-reference
 
