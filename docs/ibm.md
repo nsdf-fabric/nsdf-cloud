@@ -1,15 +1,32 @@
-# IbmCloud setup
+# IBM Cloud setup
 
 Links:
 
+- https://www.ibm.com/cloud/cli
 - https://github.com/IBM-Cloud/ibm-cloud-cli-release/issues/57
+- https://cloud.ibm.com/docs/vpc?topic=vpc-infrastructure-cli-plugin-vpc-reference
 
 
 TODO...
 
 ### Prerequisites
 
-install ibmcloudcli
+Follow the installation instructions for IBM Cloud CLI from https://www.ibm.com/cloud/cli
+
+```
+ibmcloud login
+```
+
+```
+ibmcloud plugin install vpc-infrastructure
+```
+
+The "vpc-infrastructure" plugin adds the is subcommand which allows to control VPC resources.
+
+E.g., to list instances use:
+```
+ibmcloud si instances
+```
 
 
 ### Credential Setup up in Vendor IAM & SSH Keys
