@@ -11,7 +11,7 @@ TODO...
 
 ### Prerequisites
 
-Follow the installation instructions for IBM Cloud CLI from https://www.ibm.com/cloud/cli
+Follow the installation instructions for IBM Cloud CLI from https://www.ibm.com/cloud/cli for your system.
 
 ```
 ibmcloud login
