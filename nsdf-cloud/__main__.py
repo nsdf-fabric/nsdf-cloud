@@ -17,7 +17,6 @@ def CreateAnsibleInventory(filename,nodes):
 
 	logging.info(f"Creating ansible inventory {filename}")
 
-	
 	username=nodes[0]["ssh-username"]
 	key_filename=nodes[0]["ssh-key-filename"]	
 	hosts=[it['public_ip'] for it in nodes if it.get('type','node')=='node']
@@ -87,7 +86,7 @@ def main(args):
 		ret=instance.deleteNodes(args[2:])
 
 	# two arguments. Example: "get nodes" will call Class.getNodes(...)
-	if len(args)>1 and hasattr(instance,f"{args[0]}{args[1].title()}"):
+	elif len(args)>1 and hasattr(instance,f"{args[0]}{args[1].title()}"):
 		ret=eval(f"instance.{args[0]}{args[1].title()}(args[2:])")
 	
 	# one argument. Example "list" will call Class.list(...)
