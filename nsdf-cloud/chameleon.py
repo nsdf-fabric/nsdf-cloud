@@ -40,7 +40,7 @@ class ChameleonEC2(BaseEc2):
 		self.node_type	=	 self.config["node-type"]
 		self.image_name   =	 self.config["image-name"]
 		self.network_name =	 self.config["network-name"]
-		self.lease_days   =	 self.config["lease-days"]
+		self.lease_days   =	 int(self.config["lease-days"])
 
 		logging.info(f"\t [node_type={self.node_type}]")
 		logging.info(f"\t [image_name={self.image_name}]")

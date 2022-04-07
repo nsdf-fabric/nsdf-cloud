@@ -12,6 +12,28 @@ from .cloudlab  import CloudLabEc2
 from .vultr      import VultrEc2
 from .jetstream  import JetStreamEc2
 
+# //////////////////////////////////////////////////////////////
+def CreateAnsibleInventory(filename,nodes):
+
+	logging.info(f"Creating ansible inventory {filename}")
+
+	
+	username=nodes[0]["ssh-username"]
+	key_filename=nodes[0]["ssh-key-filename"]	
+	hosts=[it['public_ip'] for it in nodes if it.get('type','node')=='node']
+
+	with open(filename,'w') as f:
+		f.write('\n'.join(
+			hosts+
+			[
+			"",
+			"[all:vars]",
+			"ansible_connection=ssh",
+			f"ansible_user={username}",
+			f"ansible_ssh_private_key_file={key_filename}",
+			"ansible_ssh_extra_args='-o StrictHostKeyChecking=no",
+		]))
+		f.write('\n')
 
 # //////////////////////////////////////////////////////////////
 def main(args):
@@ -45,11 +67,24 @@ def main(args):
 	# dangerous
 	# logging.info(f"Current config:\n{pformat(config)}")
 
-
 	# create the class to automatically create VMs
 	Class=config.pop("class")
 	logging.info(f"Class is {Class}")
 	instance=eval(f"{Class}(config)")
+
+	# createNodes
+	if len(args)>1 and args[0]=="create" and args[1]=="nodes":
+		ret=instance.createNodes(args[2:])
+		CreateAnsibleInventory(f"ansible-inventory.{args[2]}.ini",ret)
+
+	# getNodes
+	elif len(args)>1 and args[0]=="get" and args[1]=="nodes":
+		ret=instance.getNodes(args[2:])
+		CreateAnsibleInventory(f"ansible-inventory.{args[2]}.ini",ret)
+
+	# deleteNodes
+	elif len(args)>1 and args[0]=="delete" and args[1]=="nodes":
+		ret=instance.deleteNodes(args[2:])
 
 	# two arguments. Example: "get nodes" will call Class.getNodes(...)
 	if len(args)>1 and hasattr(instance,f"{args[0]}{args[1].title()}"):
@@ -61,7 +96,6 @@ def main(args):
 
 	# if the return type is a generator, transform it into a python list
 	ret=list(ret) if isinstance(ret, types.GeneratorType) else ret
-
 	return ret
 
 # //////////////////////////////////////////////////////////////
