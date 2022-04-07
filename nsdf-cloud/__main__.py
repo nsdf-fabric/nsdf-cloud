@@ -31,7 +31,7 @@ def CreateAnsibleInventory(filename,nodes):
 			"ansible_connection=ssh",
 			f"ansible_user={username}",
 			f"ansible_ssh_private_key_file={key_filename}",
-			"ansible_ssh_extra_args='-o StrictHostKeyChecking=no",
+			"ansible_ssh_extra_args='-o StrictHostKeyChecking=no'",
 		]))
 		f.write('\n')
 
