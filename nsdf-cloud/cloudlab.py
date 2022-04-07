@@ -139,13 +139,13 @@ class CloudLabEc2(BaseEc2):
 	def extendNodes(self, args):
 		uid=args[0]
 		logging.info(F"extend_instances {uid}")
-		(exitval,response)=api.terminateExperiment(self.conn,{
+		(exitval,response)=api.extendExperiment (self.conn,{
 				"experiment" : f"{self.project_name},{uid}",
 				"wanted": 24, # hours?
 				"reason": "I need this for another day please (nsdf-testbed automatic script to keep the node alive)",
 				"asjson" : True
 			}).apply()
-		Check(exitval==0,f" terminateExperiment failed with exitval={exitval} and response {response.output}")
+		Check(exitval==0,f" extendExperiment  failed with exitval={exitval} ")
 		return True
 
 	# deleteNodes

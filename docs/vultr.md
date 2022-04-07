@@ -29,8 +29,8 @@ Go to the Vulr [Manage SSH keys](https://www.cloudlab.us/ssh-keys.php) and add y
 Add one item to your `~/.nsdf/vault/vault.yml` file (change values as needed; for example you may need to change the `api-key`):
 
 ```
-ec2-vultr:/
-  class: VultrEcom
+ec2-vultr:
+  class: VultrEc2
   api-key: XXXXX
   num: 1
   VPSPLANID: 201  # this plan is '1024 MB RAM,25 GB SSD,1.00 TB BW'
