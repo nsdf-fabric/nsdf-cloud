@@ -25,7 +25,21 @@ Items:
 * [ ] Create a "story" about big and distributed "cluster" with VMs coming from different cloud solutions (both commercial and educational)
   - [ ] For example we could create 50 VMs on several cluster, install kubernetes on it, then JupyterHub and, via a geographical-aware DNS, redirect people to the nearest NSDF cluster
 
-# Python requirements
+
+# Setup Instructions
+
+## NSDF Vault
+
+NSDF tools allow users to maintain a crendential database. For now this is
+located in a users home directory "~/.nsdf/vault". Ensure to setup the 
+credential "vault" as follows:
+
+```
+mkdir -p ~/.nsdf
+git clone git@github.com:nsdf-fabric/vault.git ~/.nsdf/vault
+```
+
+## Python requirements
 
 Install the following Python packages:
 
@@ -45,7 +59,8 @@ python3 -m pip install \
     bs4
 ```
 
-# Security checks
+
+## Security checks
 
 ```
 python3 -m pip install install truffleHog

@@ -4,6 +4,7 @@ from distutils.command.check import check
 from pprint import pprint,pformat
 
 from .utils import *
+import json
 
 # all the automation classes here
 from .aws       import AmazonEC2
@@ -117,19 +118,21 @@ def main(args):
 		uid,args=args[2],args[2:]
 		nodes=instance.getNodes(args)
 		print(CreateTiDbTopology(nodes))
-		return 0		
+		return 0
 
 	if args[0:2]==["create","nodes"]:
 		uid,args=args[2],args[2:]
 		ret=instance.createNodes(args)
-		pprint(list(ret) if isinstance(ret, types.GeneratorType) else ret)
+		ret=list(ret) if isinstance(ret, types.GeneratorType) else ret
+		print(json.dumps(ret))
 		return 0
 
 	if args[0:2]==["get","nodes"]:
 		uid,args=args[2],args[2:]
 		ret=instance.getNodes(args)
-		pprint(list(ret) if isinstance(ret, types.GeneratorType) else ret)
-		return 0	
+		ret=list(ret) if isinstance(ret, types.GeneratorType) else ret
+		print(json.dumps(ret))
+		return 0
 
 	if args[0:2]==["delete","nodes"]:
 		uid,args=args[2],args[2:]
@@ -141,14 +144,13 @@ def main(args):
 		method_name=f"{args[0]}{args[1].title()}"
 		if hasattr(instance,method_name):
 			ret=eval(f"instance.{method_name}(args[2:])")
-			pprint(list(ret) if isinstance(ret, types.GeneratorType) else ret)
+			ret=list(ret) if isinstance(ret, types.GeneratorType) else ret
+			print(json.dumps(ret))
 			return 0
 		
 	logging.info("syntax error, got",args)
 	return -1
 	
-	
 
-# //////////////////////////////////////////////////////////////
 if __name__=="__main__":
 	main(sys.argv[1:])
