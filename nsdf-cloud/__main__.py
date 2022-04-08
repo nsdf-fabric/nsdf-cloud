@@ -4,6 +4,7 @@ from distutils.command.check import check
 from pprint import pprint,pformat
 
 from .utils import *
+import json
 
 # all the automation classes here
 from .aws       import AmazonEC2
@@ -98,5 +99,6 @@ def main(args):
 	return ret
 
 # //////////////////////////////////////////////////////////////
-if __name__=="__main__":
-	pprint(main(sys.argv[1:]))
+if __name__ == "__main__":
+    ret = main(sys.argv[1:])
+    print(json.dumps(ret))
