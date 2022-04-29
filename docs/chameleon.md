@@ -103,6 +103,9 @@ ACCOUNT=ec2-chameleon-tacc
 nsdf-cloud $ACCOUNT create nodes test1 \
   --num 1 \
   --node-type compute_haswell
+
+# ACCOUNT=ec2-chameleon-uc
+# nsdf-cloud $ACCOUNT create nodes tamu-uc3 --num 3  --node-type gpu_rtx_6000
 ```
 
 > You could get the *NOT_ENOUGH_RESOURCES* error message. Python code will retry to get the lease.
@@ -118,3 +121,36 @@ Delete nodes:
 ```
 nsdf-cloud $ACCOUNT delete nodes test1 
 ```
+
+## Chameleon TACC
+
+Instance types:
+
+- compute_cascadelake
+- compute_cascadelake_r
+- **Haswell Infiniband nodes** compute_haswell_ib
+- compute_nvdimm
+- **Skylake compute nodes** compute_skylake
+- compute_zen3
+- **FPGA nodes** fpga
+- **NVIDIA K80 nodes** gpu_k80
+- **NVIDIA M40 nodes** gpu_m40
+- gpu_mi100
+- **NVIDIA P100 nodes** gpu_p100
+- **NVIDIA P100 NVLink nodes** gpu_p100_nvlink
+- gpu_p100_v100
+- **Storage nodes** storage
+- **Storage Hierarchy nodes** storage_hierarchy
+
+## Chameleon UC
+
+Instance types:
+
+- compute_cascadelake_r
+- compute_haswell
+- **Skylake compute nodes** compute_skylake
+- **FPGA nodes** fpga
+- **NVIDIA RTX 6000 nodes** gpu_rtx_6000
+- gpu_v100
+- **Storage nodes** storage
+- storage_nvme

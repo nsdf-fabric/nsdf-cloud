@@ -53,16 +53,17 @@ class ChameleonEC2(BaseEc2):
 		logging.info(f"Creating lease")
 		while True:
 			
-			# making as long as possible..
-			# see https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html#:~:text=To%20ensure%20fairness%20to%20all,request%20if%20resources%20are%20available.
-			start_date, end_date = lease_duration(days=lease_days) 
-
-			reservations=[]
-			add_node_reservation(reservations, count=num, node_type=node_type)
-			add_fip_reservation(reservations,  count=num_ips)
-
 			ex=None
 			try:
+
+				# making as long as possible..
+				# see https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html#:~:text=To%20ensure%20fairness%20to%20all,request%20if%20resources%20are%20available.
+				start_date, end_date = lease_duration(days=lease_days) 
+
+				reservations=[]
+				add_node_reservation(reservations, count=num, node_type=node_type)
+				add_fip_reservation(reservations,  count=num_ips)
+
 				lease = create_lease(uid, reservations, start_date=start_date,end_date=end_date)
 			except Exception as __ex:
 				ex=traceback.format_exc()
