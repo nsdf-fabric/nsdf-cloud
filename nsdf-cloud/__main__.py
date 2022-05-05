@@ -15,10 +15,9 @@ from .jetstream  import JetStreamEc2
 
 # //////////////////////////////////////////////////////////////
 def CreateAnsibleInventory(nodes):
-
 	username=nodes[0]["ssh-username"]
 	key_filename=nodes[0]["ssh-key-filename"]	
-	hosts=[it['public_ip'] for it in nodes if it.get('type','node')=='node']
+	hosts="\n".join([it['public_ip'] for it in nodes if it.get('type','node')=='node'])
 
 	return f"""
 {hosts}

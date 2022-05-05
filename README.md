@@ -66,3 +66,24 @@ python3 -m pip install \
 python3 -m pip install install truffleHog
 trufflehog ./
 ```
+
+
+## Misc
+
+Create ansible inventory:
+
+```
+nsdf-cloud $ACCOUNT create ansible-inventory <uid> > ansible-inventory.ini 
+```
+
+
+Install DASK:
+
+```
+ansible-playbook -i ansible-inventory.ini ansible/install-dask.yaml
+```
+```
+
+
+
+

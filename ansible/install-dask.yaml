@@ -1,0 +1,53 @@
+---
+- hosts: all
+  environment:
+    LC_ALL: C
+    LANG: C
+  gather_facts: no
+
+  tasks:
+
+  # ////////////////////////////////////////////////
+  - name: Hello message
+    command: |
+      echo "   "
+      echo "Hello, I am $(whoami)"
+  
+  # ////////////////////////////////////////////////
+  - name: Update APT 
+    become: yes
+    apt: update_cache=yes cache_valid_time=3600
+
+  # ////////////////////////////////////////////////
+  - name: Install Python
+    become: yes
+    apt:
+      name: 
+        - python3
+        - python3-pip
+
+  # ////////////////////////////////////////////////
+  - name: Install Python Wheels
+    pip:
+      extra_args: --user --upgrade
+      name: 
+        - boto3
+        - pyyaml 
+        - dask[complete] 
+        - prefect[viz] 
+        - distributed 
+        - s3fs 
+        - awscli 
+        - requests 
+        - urllib3 
+        - materials-commons-api 
+        - asyncssh 
+        - pendulum
+        - jupyter
+        - cryptography
+        - mysql-connector-python
+        - pandas
+        - s3fs
+        - sqlalchemy
+        
+
